@@ -1,5 +1,5 @@
 # What?
-This is a dump of all alcoholic products from the norwegian Vinmonopolet and the swedish Systembolaget, based on their own dumps buried within their web sites. They use different units of measurement, this dump has the same units across both.
+This is a dump of all products from the norwegian Vinmonopolet and the swedish Systembolaget, based on their own dumps buried within their web sites. They use different units of measurement, this dump has the same units across both.
 
 # Why?
 Originally I looked for any rum greater than 55% for a drink recipe. Neither of their search engines allowed to search based on alcohol percentage, so I created this dump to search for it myself.
