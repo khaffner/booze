@@ -13,5 +13,6 @@ At the time of writing, no schedule or automatic update. Look at commit date for
 # This is just the raw data, how do I use this?
 Use it as you please, I have not yet created a user friendly searchable and sortable table for all the data. But now, if you're on Windows, I recommend simply using powershell.
 ```powershell
-Invoke-RestMethod -Uri https://raw.githubusercontent.com/khaffner/booze/master/dump.json | Out-GridView
+$d = Invoke-RestMethod -Uri https://raw.githubusercontent.com/khaffner/booze/master/dump.json
+$d | Out-GridView
 ``` 
