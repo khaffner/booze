@@ -5,7 +5,7 @@ This is a dump of all products from the norwegian Vinmonopolet and the swedish S
 Originally I looked for any rum greater than 55% for a drink recipe. Neither of their search engines allowed to search based on alcohol percentage, so I created this dump to search for it myself.
 
 # How?
-I used Powershell, [here's the code](https://github.com/khaffner/Consumer-Tools/blob/master/Get-Alcohol.ps1). Then just pipe it to ConvertTo-Json and Out-File.
+I used Powershell, [here's the code](https://raw.githubusercontent.com/khaffner/booze/master/Get-Booze.ps1). Then just convert to json, csv and html and save to file.
 
 # How up to date is this?
 At the time of writing, no schedule or automatic update. Look at commit date for age.
