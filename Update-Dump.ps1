@@ -1,4 +1,4 @@
-. ./Get-Booze.ps1
+. $PSScriptRoot/Get-Booze.ps1
 
 $d = Get-Booze | Where-Object AlcoholPercentage -GT 0 | Sort-Object Source,ProductNumber
 $d | ConvertTo-Json | Out-File -FilePath "./dump.json" -Force
