@@ -1,12 +1,12 @@
 . $PSScriptRoot/Get-Booze.ps1
 
-git pull
+git -C $PSScriptRoot pull
 
 $d = Get-Booze | Where-Object AlcoholPercentage -GT 0 | Sort-Object Source,ProductNumber
-$d | ConvertTo-Json | Out-File -FilePath "./dump.json" -Force
-$d | Export-Csv -Delimiter ';' -Path "./dump.csv" -Force
-$d | ConvertTo-Html | Out-File -FilePath "./dump.html" -Force
+$d | ConvertTo-Json | Out-File -FilePath "$PSScriptRoot/dump.json" -Force
+$d | Export-Csv -Delimiter ';' -Path "$PSScriptRoot/dump.csv" -Force
+$d | ConvertTo-Html | Out-File -FilePath "$PSScriptRoot/dump.html" -Force
 
-git add 'dump.*'
-git commit -m "automatic update"
-git push
+git -C $PSScriptRoot add 'dump.*'
+git -C $PSScriptRoot commit -m "automatic update"
+git -C $PSScriptRoot push
