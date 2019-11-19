@@ -49,7 +49,7 @@
             Foreach ($Entry in $SystembolagetProducts) {
                 $Product = New-Object Product
                 $Product.Source = 'Systembolaget'
-                $Product.Productnumber = $Entry.Varnummer
+                $Product.Productnumber = $Entry.nr
                 $Product.Name = "$($Entry.Namn) $($Entry.Namn2)"
                 $Product.Price = $Entry.Prisinklmoms
                 $Product.Volume = ($Entry.Volymiml / 1000)
