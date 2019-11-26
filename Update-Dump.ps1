@@ -1,6 +1,7 @@
+git -C $PSScriptRoot pull
+
 . $PSScriptRoot/Get-Booze.ps1
 
-git -C $PSScriptRoot pull
 
 $d = Get-Booze | Where-Object AlcoholPercentage -GT 0 | Sort-Object Source,ProductNumber
 $d | ConvertTo-Json | Out-File -FilePath "$PSScriptRoot/dump.json" -Force
