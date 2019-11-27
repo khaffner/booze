@@ -69,9 +69,9 @@
             }
         }
         try {
-            $Translations = Import-Csv ./translations.csv -Delimiter ';'
+            $Translations = Import-Csv $PSScriptRoot/translations.csv -Delimiter ';'
             foreach ($Product in $Products) {
-                $TranslatedCategory = $Translations | Where-Object Original -EQ $Product.Category | select -ExpandProperty english
+                $TranslatedCategory = $Translations | Where-Object Original -EQ $Product.Category | Select-Object -ExpandProperty english
                 if($TranslatedCategory) {
                     $Product.Category = $TranslatedCategory
                 }
