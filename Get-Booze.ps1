@@ -24,6 +24,7 @@
         }
     }
     Process {
+        $Products = @()
         if ($Source -contains 'Vinmonopolet') {
             $ProductsRawVinmonopoletUrl = 'https://www.vinmonopolet.no/medias/sys_master/products/products/hbc/hb0/8834253127710/produkter.csv'
             $VinmonopoletRequest = Invoke-WebRequest -Uri $ProductsRawVinmonopoletUrl
@@ -42,7 +43,7 @@
                 $Product.Container = $Entry.Emballasjetype
                 $Product.AlcoholPercentage = $Entry.Alkohol.Replace(',', '.')
                 $Product.PricePerAlcohol = $Product.Price/($Product.Volume*1000*($Product.AlcoholPercentage/100))
-                Write-Output $Product
+                $products += $Product
             }
         }
         if ($Source -contains 'Systembolaget') {
@@ -64,10 +65,23 @@
                 $Product.Container = $Entry.Forpackning
                 $Product.AlcoholPercentage = $Entry.Alkoholhalt.TrimEnd('%')
                 $Product.PricePerAlcohol = $Product.Price/($Product.Volume*1000*($Product.AlcoholPercentage/100))
-                Write-Output $Product
+                $Products += $Product
             }
+        }
+        try {
+            $Translations = Import-Csv ./translations.csv -Delimiter ';'
+            foreach ($Product in $Products) {
+                $TranslatedCategory = $Translations | Where-Object Original -EQ $Product.Category | select -ExpandProperty english
+                if($TranslatedCategory) {
+                    $Product.Category = $TranslatedCategory
+                }
+            }
+        }
+        catch {
+            Write-Warning "Translations failed, the Translations.csv might be missing or translated categories might be incomplete."
         }
     }
     End {
+        Write-Output $Products
     }
 }
