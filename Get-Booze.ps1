@@ -12,6 +12,8 @@
             [string]$Source
             [long]$ProductNumber
             [string]$Name
+            [string]$NameWithoutYear
+            [int]$Year
             [float]$Price
             [float]$Volume
             [float]$PricePerLiter
@@ -31,6 +33,8 @@
                 $Product.Source = 'Vinmonopolet'
                 $Product.ProductNumber = $Entry.Varenummer
                 $Product.Name = $Entry.Varenavn
+                $Product.NameWithoutYear = ($Entry.Varenavn -replace '\d{4}','').Trim()
+                $Product.Year = $Entry.Argang
                 $Product.Price = $Entry.Pris.Replace(',', '.')
                 $Product.Volume = $Entry.Volum.Replace(',', '.')
                 $Product.PricePerLiter = $Entry.LiterPris.Replace(',', '.')
@@ -51,6 +55,8 @@
                 $Product.Source = 'Systembolaget'
                 $Product.Productnumber = $Entry.nr
                 $Product.Name = "$($Entry.Namn) $($Entry.Namn2)"
+                $Product.NameWithoutYear = "$($Entry.Namn) $($Entry.Namn2)"
+                $Product.Year = $Entry.Argang
                 $Product.Price = $Entry.Prisinklmoms
                 $Product.Volume = ($Entry.Volymiml / 1000)
                 $Product.PricePerLiter = $Entry.PrisPerLiter
