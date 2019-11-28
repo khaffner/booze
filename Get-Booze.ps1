@@ -55,8 +55,8 @@
                 $Product = New-Object Product
                 $Product.Source = 'Systembolaget'
                 $Product.Productnumber = $Entry.nr
-                $Product.Name = "$($Entry.Namn) $($Entry.Namn2)"
-                $Product.NameWithoutYear = "$($Entry.Namn) $($Entry.Namn2)"
+                $Product.Name = ("$($Entry.Namn) $($Entry.Namn2)").Trim()
+                $Product.NameWithoutYear = ("$($Entry.Namn) $($Entry.Namn2)").Trim()
                 $Product.Year = $Entry.Argang
                 $Product.Price = $Entry.Prisinklmoms
                 $Product.Volume = ($Entry.Volymiml / 1000)
